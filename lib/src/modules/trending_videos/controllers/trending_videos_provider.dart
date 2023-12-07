@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,20 +15,35 @@ class TrendingVideosController extends ChangeNotifier {
   ServiceRepository repository = ServiceRepository();
   TrendingVideoModel? trendingVideoModel;
   var isLoading = false;
+  var isBottomLoading = false;
   int pageNo = 1;
   int totalItem = 0;
+  var scrollController = ScrollController();
   getTrendingVideos(context) async {
-    isLoading = true;
-    notifyListeners();
+    if (pageNo == 1) {
+      isLoading = true;
+      isBottomLoading = false;
+      notifyListeners();
+    } else {
+      isBottomLoading = true;
+      isLoading = false;
+      notifyListeners();
+    }
 
     try {
       Response response = await repository.getTrendingVideos(pageNo);
-      isLoading = false;
-      notifyListeners();
+      if (pageNo == 1) {
+        isBottomLoading = false;
+        isLoading = false;
+        notifyListeners();
+      } else {
+        isBottomLoading = false;
+        isLoading = false;
+        notifyListeners();
+      }
 
       if (response.statusCode == 200) {
-        pageNo++;
-        if (pageNo > 2) {
+        if (pageNo > 1) {
           for (var videoData in response.data['results']) {
             trendingVideoModel!.results!.add(VideoModel.fromJson(videoData));
           }
@@ -34,6 +51,7 @@ class TrendingVideosController extends ChangeNotifier {
           trendingVideoModel = TrendingVideoModel.fromJson(response.data);
           totalItem = trendingVideoModel!.total!;
         }
+        pageNo++;
         notifyListeners();
       } else {
         Utils.customSnackBar(
@@ -43,8 +61,14 @@ class TrendingVideosController extends ChangeNotifier {
             snackTextColor: AppColors.whiteColor);
       }
     } catch (e) {
-      isLoading = false;
-      notifyListeners();
+      if (pageNo == 1) {
+        isLoading = false;
+        notifyListeners();
+      } else {
+        isBottomLoading = false;
+        isLoading = false;
+        notifyListeners();
+      }
       if (context.mounted) {
         Utils.customSnackBar(
             context: context,
