@@ -35,7 +35,7 @@ class AppTextWidget extends StatelessWidget {
       maxLines: maxLines,
       style: TextStyle(
           fontWeight: fontWeight ?? FontWeight.normal,
-          fontSize: fontSize ?? 18,
+          fontSize: fontSize ?? 15,
           color: color ?? AppColors.primaryTextColor,
           overflow: maxLines != null ? TextOverflow.ellipsis : null,
           decoration: textDecoration,

@@ -3,7 +3,7 @@ class TrendingVideoModel {
   int? total;
   int? page;
   int? pageSize;
-  List<Results>? results;
+  List<VideoModel>? results;
 
   TrendingVideoModel(
       {this.links, this.total, this.page, this.pageSize, this.results});
@@ -14,9 +14,9 @@ class TrendingVideoModel {
     page = json['page'];
     pageSize = json['page_size'];
     if (json['results'] != null) {
-      results = <Results>[];
+      results = <VideoModel>[];
       json['results'].forEach((v) {
-        results!.add( Results.fromJson(v));
+        results!.add( VideoModel.fromJson(v));
       });
     }
   }
@@ -55,7 +55,7 @@ class Links {
   }
 }
 
-class Results {
+class VideoModel {
   String? thumbnail;
   int? id;
   String? title;
@@ -78,7 +78,7 @@ class Results {
   String? duration;
   String? objectType;
 
-  Results(
+  VideoModel(
       {this.thumbnail,
       this.id,
       this.title,
@@ -101,7 +101,7 @@ class Results {
       this.duration,
       this.objectType});
 
-  Results.fromJson(Map<String, dynamic> json) {
+  VideoModel.fromJson(Map<String, dynamic> json) {
     thumbnail = json['thumbnail'];
     id = json['id'];
     title = json['title'];

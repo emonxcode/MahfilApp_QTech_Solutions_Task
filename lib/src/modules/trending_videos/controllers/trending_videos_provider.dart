@@ -13,17 +13,27 @@ class TrendingVideosController extends ChangeNotifier {
   ServiceRepository repository = ServiceRepository();
   TrendingVideoModel? trendingVideoModel;
   var isLoading = false;
+  int pageNo = 1;
+  int totalItem = 0;
   getTrendingVideos(context) async {
     isLoading = true;
     notifyListeners();
 
     try {
-      Response response = await repository.getTrendingVideos();
+      Response response = await repository.getTrendingVideos(pageNo);
       isLoading = false;
       notifyListeners();
 
       if (response.statusCode == 200) {
-        trendingVideoModel = TrendingVideoModel.fromJson(response.data);
+        pageNo++;
+        if (pageNo > 2) {
+          for (var videoData in response.data['results']) {
+            trendingVideoModel!.results!.add(VideoModel.fromJson(videoData));
+          }
+        } else {
+          trendingVideoModel = TrendingVideoModel.fromJson(response.data);
+          totalItem = trendingVideoModel!.total!;
+        }
         notifyListeners();
       } else {
         Utils.customSnackBar(

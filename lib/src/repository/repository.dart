@@ -6,10 +6,10 @@ import '../services/urls.dart';
 
 class ServiceRepository {
   final BaseApiServices _apiServices = NetworkApiServices();
-  Future<dynamic> getTrendingVideos() async {
+  Future<dynamic> getTrendingVideos(int pageNo) async {
     try {
       Response response =
-          await _apiServices.getApi(Urls.getTrendingVideosUrl);
+          await _apiServices.getApi(Urls.getTrendingVideosUrl + pageNo.toString());
 
       return response;
     } catch (e) {
