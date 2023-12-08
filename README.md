@@ -1,16 +1,47 @@
-# mahfil_app
+# MahfilApp
 
-A new Flutter project.
+ > Overview
+<h6># Trending Video list with paginations</h6> 
+<h6># Video player with thumbnail and controller</h6>
+<h6># Used cached network image in thumbnail</h6>
+<h6>.</h6>
+<h6>.</h6>
+    
 
-## Getting Started
+ > Project Structure
+```
+ MahfilApp > lib  |-- main.dart
+                  |-- src
+                         |-- modules
+                                    |-- trending_videos
+                                              |-- controller
+                                              |-- models
+                                              |-- views
+                                    |-- video_view
+                                              |-- controller
+                                              |-- models
+                                              |-- views
+                         |-- repository
+                                    |-- repository.dart
+                         |-- services
+                                 |-- network
+                         |-- utils
+                         |-- widgets
+                         |-- app.dart   
+```
+<h6>.</h6>
 
-This project is a starting point for a Flutter application.
+>Screenshots
+<table>
+<td> 
+<img src="https://github.com/emonxcode/MahfilApp_QTech_Solutions_Task/assets/90932124/f538a317-e29a-4497-a269-f04293c43a8d" width="340" height="600"/>
+</td>
+<td> 
+<img src="https://github.com/emonxcode/MahfilApp_QTech_Solutions_Task/assets/90932124/cad89bfa-f7bd-42cc-9865-590680663cbd" width="340" height="600"/>
+</td>
+<td> 
+<img src="https://github.com/emonxcode/MahfilApp_QTech_Solutions_Task/assets/90932124/a539ebb0-be12-4eae-9d70-1de30ade05b6" width="340" height="600"/>
+</td>
+</tr>
+</table>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
