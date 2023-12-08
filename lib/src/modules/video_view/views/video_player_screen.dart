@@ -1,12 +1,15 @@
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:mahfil_app/src/modules/trending_videos/models/trending_videos_model.dart';
 import 'package:mahfil_app/src/modules/video_view/controllers/video_player_controller.dart';
 import 'package:mahfil_app/src/modules/video_view/views/widgets/thumbnail.dart';
 import 'package:mahfil_app/src/modules/video_view/views/widgets/video_view.dart';
 import 'package:mahfil_app/src/utils/app_colors.dart';
 import 'package:mahfil_app/src/utils/context.dart';
+import 'package:mahfil_app/src/utils/sizes.dart';
+import 'package:mahfil_app/src/widgets/app_text_widget.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerScreen extends ConsumerStatefulWidget {
@@ -45,6 +48,7 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
           height: context.height,
           width: context.width,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
@@ -75,6 +79,41 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
                   ),
                 ],
               ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: AppTextWidget(
+                  text: widget.video.title!,
+                  fontSize: 20,
+                  maxLines: 2,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: AppTextWidget(
+                  text:
+                      "${widget.video.viewers!} Views . ${(DateTime.now().difference(DateTime.parse(widget.video.createdAt!)).inDays)} days ago",
+                  fontSize: 14,
+                  maxLines: 2,
+                ),
+              ),
+              AppSpace.spaceH10,
+              Row(
+                children: [
+                  Container(
+                    height: 78,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: Colors.grey, width: 2),
+                    ),
+                    child: const Column(
+                      children: [],
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),

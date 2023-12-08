@@ -32,7 +32,7 @@ class Thumbnail extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.play_circle,
-                size: 100,
+                size: 80,
                 color: AppColors.redColor,
               ),
             ),
