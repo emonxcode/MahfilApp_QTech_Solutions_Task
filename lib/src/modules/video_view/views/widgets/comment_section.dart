@@ -48,24 +48,22 @@ class CommentSection extends ConsumerWidget {
                   SizedBox(
                     height: 50,
                     width: context.width - 24,
-                    child: Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
-                          hintText: "Add comment",
-                          suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.send,
-                              color: AppColors.secondaryTextColor,
-                            ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 10),
+                        hintText: "Add comment",
+                        suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.send,
+                            color: AppColors.secondaryTextColor,
                           ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide:
-                                const BorderSide(width: 2, color: Colors.grey),
-                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          borderSide:
+                              const BorderSide(width: 2, color: Colors.grey),
                         ),
                       ),
                     ),

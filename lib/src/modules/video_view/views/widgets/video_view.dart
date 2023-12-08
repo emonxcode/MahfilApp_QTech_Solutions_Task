@@ -22,6 +22,7 @@ class VideoPlayerView extends StatelessWidget {
           flickManager: flickManager,
           wakelockEnabled: true,
           flickVideoWithControls: const FlickVideoWithControls(
+            videoFit : BoxFit.cover,
             controls: FlickPortraitControls(),
           ),
         ),
