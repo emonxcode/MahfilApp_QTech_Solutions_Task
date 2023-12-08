@@ -17,6 +17,7 @@ import 'package:video_player/video_player.dart';
 import '../../trending_videos/views/widgets/image_shimmer_loader.dart';
 import 'widgets/action_button.dart';
 import 'widgets/channel_pannel.dart';
+import 'widgets/comment_section.dart';
 
 class VideoPlayerScreen extends ConsumerStatefulWidget {
   const VideoPlayerScreen({super.key, required this.video});
@@ -46,6 +47,7 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(videoPlayerProvider);
     var controller = ref.read(videoPlayerProvider);
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackGroundColor,
@@ -135,98 +137,6 @@ class _VideoPlayerScreenState extends ConsumerState<VideoPlayerScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class CommentSection extends ConsumerWidget {
-  const CommentSection({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(videoPlayerProvider);
-    return Column(
-      children: [
-        Row(
-          children: [
-            AppSpace.spaceW12,
-            const AppTextWidget(text: "Comments 7.5K"),
-            const Spacer(),
-            IconButton(
-              onPressed: () {
-                ref.watch(videoPlayerProvider).setCommentSectionVisibility();
-              },
-              icon: Icon(ref.read(videoPlayerProvider).showCommentSection
-                  ? Icons.keyboard_arrow_up_outlined
-                  : Icons.keyboard_arrow_down_outlined),
-            ),
-          ],
-        ),
-        AppSpace.spaceH10,
-        if (ref.read(videoPlayerProvider).showCommentSection)
-          Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  AppSpace.spaceW12,
-                  SizedBox(
-                    height: 50,
-                    width: context.width - 24,
-                    child: Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
-                          hintText: "Add comment",
-                          suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.send,
-                              color: AppColors.secondaryTextColor,
-                            ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            borderSide:
-                                const BorderSide(width: 2, color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              AppSpace.spaceH10,
-              ListTile(
-                leading: SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: CircleAvatar(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: const ImageCachedWithShimmerLoader(
-                        imageUrl: '',
-                        height: 40,
-                        width: 40,
-                      ),
-                    ),
-                  ),
-                ),
-                title: const AppTextWidget(
-                  text: "Fahmida Khanom",
-                  fontWeight: FontWeight.bold,
-                  maxLines: 2,
-                  fontSize: 15,
-                ),
-                subtitle: const Text(
-                    "আমরা বাংলায় ওয়েব ডেডলপমেন্ট নিয়ে কাজ করতে গিয়ে প্রথম যে সমস্যাটার মুখোমুখি হই, সেটা হলো, বাংলা ডেমো টেক্সট। ইংরেজির জন্য lorem ipsum তো আছে ।"),
-              ),
-            ],
-          ),
-      ],
     );
   }
 }
