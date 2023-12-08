@@ -20,6 +20,7 @@ dependencies:
   flick_video_player: ^0.6.0
   video_player: ^2.8.1
   cached_network_image: ^3.3.0
+  font_awesome_flutter: ^10.6.0
 
 dev_dependencies:
   flutter_test:

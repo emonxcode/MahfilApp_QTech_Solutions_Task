@@ -38,6 +38,7 @@ class _TrendingVideosState extends ConsumerState<TrendingVideosScreen> {
     ref.watch(trendingVideosProvider);
     var controller = ref.read(trendingVideosProvider.notifier);
     return Scaffold(
+      backgroundColor: AppColors.scaffoldBackGroundColor,
       body: SafeArea(
         child: Container(
           height: context.height,

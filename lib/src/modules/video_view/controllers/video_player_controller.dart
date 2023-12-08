@@ -5,9 +5,15 @@ var videoPlayerProvider =
     ChangeNotifierProvider.autoDispose((ref) => VideoPlayerViewController());
 
 class VideoPlayerViewController extends ChangeNotifier {
-    var playVideo = false;
-    setPlayer(bool value){
-      playVideo = value;
-      notifyListeners();
-    }
+  var playVideo = false;
+  void setPlayer(bool value) {
+    playVideo = value;
+    notifyListeners();
+  }
+
+  var showCommentSection = true;
+  void setCommentSectionVisibility() {
+    showCommentSection = !showCommentSection;
+    notifyListeners();
+  }
 }
