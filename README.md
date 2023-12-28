@@ -1,7 +1,7 @@
 # MahfilApp
 
  > Overview
-<h6># Trending Video list with paginations</h6> 
+<h6># Trending Video list with paginations</h6>
 <h6># Video player with thumbnail and controller</h6>
 <h6># Used cached network image in thumbnail</h6>
 <h6>.</h6>
@@ -14,17 +14,17 @@
                   |-- src
                          |-- modules
                                     |-- trending_videos
-                                              |-- controller
-                                              |-- models
-                                              |-- views
+                                          |-- controller
+                                          |-- models
+                                          |-- views
                                     |-- video_view
-                                              |-- controller
-                                              |-- models
-                                              |-- views
+                                           |-- controller
+                                           |-- models
+                                           |-- views
                          |-- repository
                                     |-- repository.dart
                          |-- services
-                                 |-- network
+                                |-- network
                          |-- utils
                          |-- widgets
                          |-- app.dart   
